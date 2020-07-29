@@ -1,0 +1,69 @@
+@mixin app-launcher-tile($active-color, $hover-color) {
+  width: 358px;
+  height: 200px;
+  box-shadow: 0px 5px 20px #00000029;
+  background-color: $active-color;
+  border-radius: 5px;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 25px;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all ease-in-out 0.2s;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+
+  .toolbar {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    .toolbar-item {
+      transition: opacity 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+      width: 25px;
+      height: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin: 0 8px;
+      cursor: pointer;
+      font-size: 18px;
+      color: #ffffff;
+      opacity: 0.25;
+      &.active,
+      &:active,
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .title-and-icon {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 16px;
+    .icon {
+      font-size: 50px;
+    }
+    .title {
+      text-align: left;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin: 0 16px;
+    }
+  }
+
+  .description {
+    text-align: left;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    letter-spacing: 0;
+  }
+}

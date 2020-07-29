@@ -1,0 +1,39 @@
+@import "../../../../../assets/sass/global/mixins";
+
+:host {
+  width: 100%;
+
+  .kt-header-menu-wrapper {
+    height: 100%;
+
+    .kt-header-menu {
+      h3 {
+        margin: 0 20px;
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        font-weight: lighter;
+        letter-spacing: 0;
+        color: #0070b4;
+      }
+      .brand-logo {
+        width: 60px;
+      }
+      .separator {
+        margin-right: 35px;
+        width: 1px;
+        background-color: rgba(#bfbfbf, 0.5);
+        height: 50px;
+      }
+      @include kt-mobile {
+        .brand-logo {
+          width: 48px;
+          margin: 0 16px;
+        }
+        h3 {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

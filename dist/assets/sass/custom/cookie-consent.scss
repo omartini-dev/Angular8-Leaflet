@@ -1,0 +1,63 @@
+@import "./zf-util/button.scss";
+@import "./zf-util/zf-colors.scss";
+
+.cc-window {
+  z-index: 1000;
+  position: fixed;
+
+  bottom: 0;
+  width: 100%;
+  padding: 35px 65px;
+  font-size: 14px;
+  display: flex;
+  background-color: rgba($zf-bg-black, 0.9) !important;
+  &.cc-invisible {
+    display: none;
+  }
+  .cc-message {
+    flex: 2;
+  }
+  .links {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: Arial, Helvetica, sans-serif;
+    .cc-info {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #ffffff;
+      margin: 0 40px;
+      .text {
+        white-space: nowrap;
+        text-decoration: underline;
+      }
+    }
+    .cc-compliance {
+      .cc-btn.cc-dismiss {
+        @include zf-button;
+        font-size: 14px;
+        letter-spacing: 0;
+      }
+    }
+  }
+  @include kt-tablet-and-mobile {
+    flex-direction: column;
+    padding: 15px 30px;
+    .cc-message {
+      flex: unset;
+    }
+    .links {
+      flex: unset;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .cc-info {
+        margin: 0;
+      }
+    }
+  }
+}

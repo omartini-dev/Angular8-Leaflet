@@ -1,0 +1,31 @@
+:host {
+  .switch-client-menu-wrapper {
+    .switch-client-menu {
+      height: 132px;
+      width: 185px;
+      padding: 16px;
+    }
+
+    .switch-client-menu-toggle {
+      transition: background-color 0.2s;
+      background: #00abe7 0% 0% no-repeat padding-box;
+      box-shadow: 0px 0px 0px #00000029;
+      border-radius: 30px;
+      padding: 10px 20px;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 185px;
+      height: 40px;
+      font-size: 1.5rem;
+      // font-weight: 600;
+    }
+    &.show {
+      .switch-client-menu-toggle {
+        background-color: #e2e4e6;
+        color: #000000;
+      }
+    }
+  }
+}

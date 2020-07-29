@@ -1,0 +1,40 @@
+<div
+  ngbDropdown
+  placement="bottom-right"
+  *ngIf="user$ | async as _user"
+  class="kt-header__topbar-item kt-header__topbar-item--user user-profile-wrapper"
+>
+  <div ngbDropdownToggle class="kt-header__topbar-wrapper">
+    <div
+      class="kt-header__topbar-user"
+      [ngClass]="{ 'kt-header__topbar-icon': icon }"
+    >
+      <img *ngIf="avatar" alt="Pic" [attr.src]="_user.pic" />
+      <div class="user-data">
+        <div class="user-name">
+          Miriam Mustermann
+          <mat-icon class="expand-icon">expand_more</mat-icon>
+        </div>
+        <div class="user-organization">
+          ZF Friedrichshafen
+        </div>
+      </div>
+      <i *ngIf="icon" class="flaticon2-user-outline-symbol"></i>
+      <span
+        *ngIf="badge"
+        class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold"
+        >{{ _user.fullname | firstLetter }}
+      </span>
+    </div>
+  </div>
+  <div
+    ngbDropdownMenu
+    class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl"
+  >
+    <div class="kt-hidden-mobile user-menu-item">
+      <kt-switch-client></kt-switch-client>
+    </div>
+    <div class="kt-hidden-mobile user-menu-item">Account Settings</div>
+    <div class="kt-hidden-mobile user-menu-item" (click)="logout()">Logout</div>
+  </div>
+</div>

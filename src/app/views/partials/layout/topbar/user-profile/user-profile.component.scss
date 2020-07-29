@@ -1,0 +1,53 @@
+@import "../../../../../../assets/sass/custom/zf-util/zf-colors.scss";
+
+:host {
+  .kt-header__topbar-item--user {
+    .kt-header__topbar-user {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      img {
+        height: 48px;
+        align-self: center;
+        border-radius: 50%;
+      }
+    }
+  }
+  .dropdown-menu {
+    width: 240px;
+  }
+  .user-data {
+    margin: 0 10px;
+    .user-name {
+      &,
+      .expand-icon {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      font-size: 16px;
+      color: $zf-active-blue;
+      font-weight: 400;
+    }
+    .user-organization {
+      font-size: 12px;
+      color: $zf-text-dark-gray;
+    }
+  }
+  .user-menu-item {
+    transition: all 0.2s;
+    cursor: pointer;
+    border-bottom: 1px solid rgba($zf-text-black-shade-2, 0.5);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $zf-cta-cyan;
+    font-size: 20px;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}

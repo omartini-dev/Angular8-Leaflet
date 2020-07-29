@@ -1,0 +1,18 @@
+<div class="info-bar-wrapper info">
+  <div class="main-content-wrapper">
+    <div class="info-wrapper">
+      <div class="title-subtitle-wrapper">
+        <div *ngIf="title" class="title">{{ title }}</div>
+        <div *ngIf="message" class="subtitle">
+          {{ message }}
+        </div>
+      </div>
+      <div class="time-wrapper">
+        <div class="close-icon-wrapper" (click)="remove()">
+          <i class="icon-a_close-menu"></i>
+        </div>
+        <div class="time">Closing in {{ currentTime }}</div>
+      </div>
+    </div>
+  </div>
+</div>

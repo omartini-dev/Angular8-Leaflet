@@ -1,0 +1,106 @@
+@import "../../../../assets/sass/custom/zf-util/zf-widths.scss";
+@import "../../../../assets/sass/custom/zf-util/zf-colors.scss";
+@import "../../../../assets/sass/global/mixins";
+:host {
+  &.toast-info {
+    .info-bar-wrapper {
+      background-color: $zf-active-blue-shade-2;
+      &,
+      .icon-a_close-menu {
+        color: $zf-active-blue;
+      }
+    }
+  }
+  &.toast-error {
+    .info-bar-wrapper {
+      background-color: $zf-bg-red-shade-2;
+      &,
+      .icon-a_close-menu {
+        color: $zf-red-alert-color;
+      }
+    }
+  }
+  &.toast-warning {
+    .info-bar-wrapper {
+      background-color: $zf-bg-yellow-shade-2;
+      &,
+      .icon-a_close-menu {
+        color: $zf-warning-text-color;
+      }
+    }
+  }
+  &.toast-success {
+    .info-bar-wrapper {
+      background-color: $zf-bg-green-shade-2;
+      &,
+      .icon-a_close-menu {
+        color: $zf-green-text-color;
+      }
+    }
+  }
+
+  .info-bar-wrapper {
+    display: flex;
+    cursor: default;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+
+    .main-content-wrapper {
+      width: 100%;
+      max-width: $main-content-max-width;
+      padding: 0 25px;
+      .info-wrapper {
+        display: flex;
+        justify-content: space-between;
+        .title-subtitle-wrapper {
+          min-width: 178px;
+          max-width: 178/375 * 100vw;
+          align-items: flex-start;
+          flex: 1;
+          .title {
+            text-align: left;
+            font-weight: bold;
+            letter-spacing: 0;
+          }
+          .title,
+          .subtitle {
+            flex: 1;
+            display: flex;
+            align-items: center;
+          }
+        }
+        .time-wrapper {
+          max-width: 100/375 * 100vw;
+          align-items: flex-end;
+          text-align: right;
+          .close-icon-wrapper {
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
+            font-size: 10px;
+            cursor: pointer;
+            width: 23px;
+            height: 23px;
+            .icon-a_close-menu {
+              font-weight: bold;
+            }
+          }
+        }
+        .time-wrapper,
+        .title-subtitle-wrapper {
+          flex: 1;
+          flex-direction: column;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+    @include kt-desktop {
+      min-height: 80px;
+    }
+  }
+}

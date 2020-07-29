@@ -1,0 +1,55 @@
+<!-- begin:: Header Mobile -->
+<div id="kt_header_mobile" class="kt-header-mobile kt-header-mobile--fixed">
+  <div class="kt-header-mobile__toolbar">
+    <!-- class="kt-header-mobile__toggler kt-header-mobile__toggler--left" -->
+    <button
+      [hidden]="!asideDisplay"
+      style="
+      background-color: #fff;
+      border: 0;
+      outline: none;
+      margin: 0;
+      padding: 0 25px 0 0;
+      height: 100%;
+  "
+      id="kt_aside_mobile_toggler"
+    >
+      <i class="icon-a_burger" style="color: #00abe7;font-size: 16px;"> </i>
+    </button>
+  </div>
+  <div class="kt-header-mobile__logo">
+    <a routerLink="/">
+      <img alt="logo" [attr.src]="headerLogo" />
+    </a>
+    <h3>Fleet Monitoring</h3>
+  </div>
+  <div class="kt-header-mobile__toolbar">
+    <!-- <button class="kt-header-mobile__toggler" id="kt_header_mobile_toggler"><span></span></button> -->
+    <!-- <button
+      ktToggle
+      [options]="toggleOptions"
+      class="kt-header-mobile__topbar-toggler"
+      id="kt_header_mobile_topbar_toggler"
+    >
+      <i class="flaticon-more"></i>
+    </button> -->
+    <div
+      class="kt-header__topbar-item notifications-toggler kt-header__topbar-item--quick-panel"
+      id="kt_mobile_quick_panel_toggler_btn"
+    >
+      <span class="kt-header__topbar-icon">
+        <span class="notifications-count-badge">15</span>
+        <i class="icon-a_notification" style="font-size: 32px;"></i>
+      </span>
+    </div>
+    <div
+      id="kt_aside_mobile_close"
+      class="kt-header__topbar-item aside-toggler kt-header__topbar-item--quick-panel"
+    >
+      <span class="kt-header__topbar-icon">
+        <i class="icon-a_close-menu"></i>
+      </span>
+    </div>
+  </div>
+</div>
+<!-- end:: Header Mobile -->

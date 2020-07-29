@@ -1,0 +1,29 @@
+.kpis-layer{
+	background-color: #EEF1F47F;
+	display: block;
+	margin:36px 0;
+}
+.info-section{
+	table{
+		border-top:2px dashed #BFBFBF;
+		margin-bottom: 64px;
+		thead{
+			font-size: 18px;
+			color:#0070B4;
+			font-weight: 400;
+			th{
+				padding: 15px 0;
+			}
+		}
+		tbody{
+			font-size: 14px;
+			th{
+				font-weight: 400;
+				width: 228px;
+			}
+			td{
+				font-family: Verdana, Geneva, Tahoma, sans-serif;
+			}
+		}
+	}
+}

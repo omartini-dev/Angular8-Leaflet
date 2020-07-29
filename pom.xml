@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.zf.cs</groupId>
+    <artifactId>app-fleet-monitoring</artifactId>
+    <version>99-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>app-fleet-monitoring-ui</artifactId>
+  <packaging>pom</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>2.33.0</version>
+      <scope>test</scope>
+    </dependency>
+    <!--<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>-->
+
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources/assets/js</directory>
+        <targetPath>${project.build.OutputDirectory}/assets/js</targetPath>
+        <filtering>true</filtering>
+        <includes>
+          <include>version.js</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-yarn</goal>
+            </goals>
+            <configuration>
+              <nodeVersion>v10.13.0</nodeVersion>
+              <yarnVersion>v1.22.0</yarnVersion>
+            </configuration>
+          </execution>
+          <execution>
+            <id>yarn install</id>
+            <goals>
+              <goal>yarn</goal>
+            </goals>
+            <!-- optional: default phase is "generate-resources" -->
+            <phase>generate-resources</phase>
+            <configuration>
+              <arguments>install --force</arguments>
+            </configuration>
+          </execution>
+          <!--
+          <execution>
+            <phase>test</phase>
+            <id>jest tests</id>
+            <goals>
+              <goal>yarn</goal>
+            </goals>
+            <configuration>
+              <skip>${skip.ui.tests}</skip>
+              <arguments>run jest-junit</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <phase>test-compile</phase>
+            <id>webpack</id>
+            <goals>
+              <goal>gulp</goal>
+            </goals>
+            <configuration>
+              <arguments>- -max_old_space_size=4000 production</arguments>
+            </configuration>
+          </execution>
+          -->
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.zf.cs</groupId>
+        <artifactId>gener8-maven-plugin</artifactId>
+        <version>99-SNAPSHOT</version>
+        <configuration>
+          <gener8RuntimeImportPath>../gener8-runtime/gener8-runtime</gener8RuntimeImportPath>
+          <outputDirectory>src/api/gener8ed</outputDirectory>
+          <definition>../../api/src/main/gener8/cs-fleetmonitoring-api.gener8.yaml</definition>
+        </configuration>
+        <executions>
+          <execution>
+            <id>typescript</id>
+            <goals>
+              <goal>typescript</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.5.3</version>
+        <configuration>
+          <finalName>${project.name}
+          </finalName>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptors>src/assembly/assets.xml</descriptors>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>package-assets</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.2</version>
+        <executions>
+          <!-- This is a hack to get Jenkins to publish Karma test results when running a Maven project: we run 0 surefire tests, so Jenkins publishes the report of the Karma tests. -->
+          <execution>
+            <id>dummySureFire</id>
+            <phase>test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

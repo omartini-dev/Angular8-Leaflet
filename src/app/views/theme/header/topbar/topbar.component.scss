@@ -1,0 +1,30 @@
+@import "../../../../../assets/sass/custom/zf-util/zf-colors.scss";
+:host {
+  ::ng-deep {
+    // override default version style
+    .kt-header__topbar {
+      align-items: center;
+      > :last-child:not([role="tooltip"]) {
+        .kt-header__topbar-item {
+          margin-right: 0 !important;
+        }
+      }
+      .kt-header__topbar-item {
+        margin-right: 0.36rem !important;
+      }
+    }
+  }
+  .separator {
+    margin: 0 35px;
+    width: 1px;
+    background-color: rgba(#bfbfbf, 0.5);
+    height: 50px;
+  }
+  .kt-header__topbar-icon {
+    position: relative;
+  }
+  .icon-a_notification {
+    color: $zf-cta-cyan;
+    font-size: 32px;
+  }
+}

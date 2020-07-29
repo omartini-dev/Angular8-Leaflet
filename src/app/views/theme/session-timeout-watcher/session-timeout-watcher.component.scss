@@ -1,0 +1,44 @@
+@import "../../../../assets/sass/custom/zf-util/button.scss";
+.wrapper {
+  width: 100%;
+  max-width: 320px;
+  background-color: #fff;
+  .header {
+    border-radius: 5px 5px 0px 0px;
+    height: 82px;
+    background: #fcd9de 0% 0% no-repeat padding-box;
+    color: #b20d19;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 36px;
+    h3 {
+      font-size: 20px;
+      margin: 0 15px;
+    }
+    i {
+      font-size: 18px;
+    }
+  }
+  .body {
+    min-height: 115px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-align: center;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #333333;
+  }
+  .footer {
+    padding-bottom: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+    .login-cta {
+      width: 100%;
+
+      @include zf-button;
+    }
+  }
+}

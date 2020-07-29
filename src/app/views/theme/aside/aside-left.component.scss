@@ -1,0 +1,69 @@
+:host {
+  .kt-aside {
+    // height: 100%;
+    // z-index: 96;
+    // padding-top: 72px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 3px 6px rgba(#000000, 0.29);
+    .kt-aside-menu {
+      margin: 0;
+      background-color: transparent;
+      .kt-menu__nav {
+        padding: 0;
+        .kt-menu__item .kt-menu__link {
+          margin-left: 0;
+          text-align: center;
+          padding-top:25px!important;
+          padding-bottom:8px!important;
+        }
+        .kt-menu__item:last-child {
+          &:last-child {
+            .kt-menu__link {
+              border-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+    .kt-aside-menu-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #001024;
+      flex: 1;
+      .kt-aside__footer {
+        background-color: #fff;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 25px;
+        align-items: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        .company-name {
+          font-size: 15px;
+          color: #bfbfbf;
+        }
+        .imprint-link {
+          font-weight: 400;
+          font-size: 12px;
+          color: #00abe7;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // fixed text line break issue on minimized aside hover
+  .kt-menu__link-text {
+    white-space: nowrap;
+  }
+
+  // .ps--active-x {
+  //   .kt-menu__link {
+  //     padding: 0;
+  //   }
+  // }
+}

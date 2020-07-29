@@ -1,0 +1,22 @@
+kt-base {
+  opacity: 0;
+  height: 100%;
+
+  .kt-grid--root {
+    height: 100%;
+  }
+}
+.session-timeout-panel {
+  max-width: 100% !important;
+  .mat-dialog-container {
+    padding: 0;
+    border-radius: 5px;
+  }
+}
+
+.kt-page--loaded {
+  kt-base {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+}

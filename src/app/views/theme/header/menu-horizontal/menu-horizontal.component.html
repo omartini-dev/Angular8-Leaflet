@@ -1,0 +1,25 @@
+<!-- BEGIN: Horizontal Menu -->
+<div
+  ktOffcanvas
+  [options]="offcanvasOptions"
+  class="kt-header-menu-wrapper"
+  id="kt_header_menu_wrapper"
+>
+  <div
+    ktMenu
+    [options]="menuOptions"
+    id="kt_header_menu"
+    class="kt-header-menu kt-header-menu-mobile"
+    [ngClass]="htmlClassService.getClasses('header_menu', true)"
+  >
+    <kt-brand></kt-brand>
+    <div class="separator"></div>
+    <img
+      class="brand-logo"
+      src="../../../../../assets/media/logos/logo-4.svg"
+      alt=""
+    />
+    <h3>Fleet Monitoring</h3>
+  </div>
+</div>
+<!-- END: Horizontal Menu -->

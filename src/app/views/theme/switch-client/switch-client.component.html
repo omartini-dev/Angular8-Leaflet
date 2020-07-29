@@ -1,0 +1,23 @@
+<div ngbDropdown placement="bottom" class="switch-client-menu-wrapper">
+  <div ngbDropdownToggle class="switch-client-menu-toggle">
+    Switch client
+    <mat-icon style="display: flex; align-items: center;"
+      >arrow_drop_down</mat-icon
+    >
+  </div>
+  <div
+    ngbDropdownMenu
+    class="dropdown-menu switch-client-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-x"
+  >
+    <div
+      ngbDropdownToggle
+      *ngFor="let client of clients"
+      (click)="selectClient(client.id)"
+      class="switch-client-menu-item"
+      [class.active]="client.id === currentClientId"
+    >
+      <mat-icon class="active-icon">done</mat-icon>
+      {{ client.name }}
+    </div>
+  </div>
+</div>

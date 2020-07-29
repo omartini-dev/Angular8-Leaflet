@@ -1,0 +1,46 @@
+<button id="test" (click)="test()">test</button>
+<div class="map-container">
+	<!-- <kt-kpis class="kpis-layer"></kt-kpis>
+	 -->
+	<div class="map-wrap">
+		<div id="setting" class="control-wrap fleet-mat text-indent" [@childAnimation]="isOpen ? 'open' : 'closed'">
+			<div class="set-wrap">
+				<div class="wipe-btn" (click)="toggle()"><span class="icon-a_three-dots"></span></div>
+				<div class="setting-container">
+					<h5>Map Layer</h5>
+				</div>
+				<hr>
+				<div class="setting-container">
+					<mat-slide-toggle [(ngModel)]="planedRouteFlag" (change)="changePlanedRoute()"><span class="rect-icon sky-bg"></span>planned route of selected vehicles</mat-slide-toggle>
+				</div>
+				<hr>
+				<div class="setting-container">
+					<mat-slide-toggle [(ngModel)]="takenRouteFlag" (change)="changeTakenRoute()"><span class="rect-icon blue-bg"></span>Show taken route of selected vehicles</mat-slide-toggle>
+				</div>
+				<hr>
+				<div class="setting-container">
+					<mat-slide-toggle><span class="rect-icon green-bg"></span>Show mobile network</mat-slide-toggle>
+				</div>
+				<hr>
+				<div class="setting-container">
+					<mat-slide-toggle><span class="rect-icon yellow-bg"></span>Show sensory availability</mat-slide-toggle>
+				</div>
+				<hr>
+				<div class="setting-container">
+					<mat-slide-toggle><span class="img-icon"><img src="assets/media/icons/light.svg"></span>Show infrastructure</mat-slide-toggle>
+				</div>
+			</div>
+		</div>
+		<div leaflet style="height: 100%;"
+					[leafletOptions]="options"
+					[leafletBaseLayers]="baseLayers"
+					[leafletLayersControlOptions]="layersControlOptions"
+
+					[leafletMarkerCluster]="markerClusterData"
+					[leafletMarkerClusterOptions]="markerClusterOptions"
+					(leafletMapReady)="onMapReady($event)"
+					(leafletMarkerClusterReady)="markerClusterReady($event)">
+					<div *ngIf="active" [leafletLayer]="activeLayer"></div>
+		</div>
+	</div>
+</div>

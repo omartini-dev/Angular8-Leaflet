@@ -1,0 +1,325 @@
+<div class="filter-container" [@childAnimation]="isOpen ? 'open' : 'closed'">
+	<a class="toggle-btn" (click)="toggle()"><span [class]="isOpen ? 'icon-a_arrow-back':'icon-a_arrow-forward'"></span></a>
+	<div class="filter-panel">
+		<div class="clearfix filter-layer">
+			<div class="dropdown d-inline">
+				<a class="dropdown-toggle" id="orderby" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Vehicles(234)<span class="icon-a_small-arrow v-middle"></span>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="orderby">
+					<a class="dropdown-item disabled">Sort by</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item active">Alphabetical (A - Z)</a>
+					<a class="dropdown-item">Alphabetical (A - Z)</a>
+					<a class="dropdown-item">Health (lowest first)</a>
+					<a class="dropdown-item">Health (highest first)</a>
+				</div>
+			</div>
+			<div class="dropdown d-inline">
+				<a class="dropdown-toggle" id="fleet" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Fleet(All)<span class="icon-a_small-arrow v-middle"></span>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="fleet">
+					<a class="dropdown-item disabled">Show</a>
+					<div class="dropdown-divider"></div>
+					<form class="fleet-form">
+						<div class="fleet-item">
+							<mat-checkbox>Fleet A</mat-checkbox>
+						</div>
+						<div class="fleet-item">
+							<mat-checkbox>Fleet B</mat-checkbox>
+						</div>
+						<div class="fleet-item">
+							<mat-checkbox>Fleet C</mat-checkbox>
+						</div>
+						<div class="fleet-item">
+							<mat-checkbox>Fleet D</mat-checkbox>
+						</div>
+						<div class="fleet-item">
+							<mat-checkbox>Fleet E</mat-checkbox>
+						</div>
+					</form>
+				</div>
+				<div class="float-right filter-right">
+					<a (click)="toggleSearch()"><span class="icon-a_search v-middle"></span></a>
+					<a (click)="toggleFilter()"><span class="icon-a_filter v-middle"></span></a>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix filter-layer">
+			<div *ngIf="searchFlag" class="p-relative">
+				<input type="text" class="form-control" placeholder="Input text" [(ngModel)]="filterVal.search">
+				<a class="input-clear" (click)="resetSearch()">
+					<i class="fa fa-times"></i>
+				</a>
+			</div>
+		</div>
+		<div *ngIf="filterFlag" class="d-abs">
+			<perfect-scrollbar id="filter-detail">
+				<h4>Filter vehicle list</h4>
+				<div class="filter-content">
+					<h5>Health state</h5>
+					<div class="list-item">
+						<mat-checkbox>Okay</mat-checkbox>
+					</div>
+					<div class="list-item">
+						<mat-checkbox [checked]=true>Warning</mat-checkbox>
+					</div>
+					<div class="list-item">
+						<mat-checkbox [checked]=true>Alarm</mat-checkbox>
+					</div>
+					<hr>
+					<h5>Latest Acitivity</h5>
+					<div class="list-item fleet-mat">
+						<mat-slide-toggle [checked]= true> < 10 minutes</mat-slide-toggle>
+					</div>
+					<div class="list-item fleet-mat">
+						<mat-slide-toggle > > 10 minutes</mat-slide-toggle>
+					</div>
+					<hr>
+					<h5>Date</h5>
+					<div class="list-item fleet-mat row mx-0">
+						<div class="label">From</div>
+						<div class="input-group date-input">
+							<div class="input-group-prepend">
+								<span class="btn btn-outline-secondary" (click)="dfrom.toggle()"><span class="icon-a_calendar"></span></span>
+							</div>
+							<input class="form-control" name="from" type="text" ngbDatepicker #dfrom="ngbDatepicker" />
+						</div>
+					</div>
+					<div class="list-item fleet-mat row mx-0">
+						<div class="label">Till</div>
+						<div class="input-group date-input">
+							<div class="input-group-prepend">
+								<span class="btn btn-outline-secondary" (click)="dtill.toggle()"><span class="icon-a_calendar"></span></span>
+							</div>
+							<input class="form-control" name="from" type="text" ngbDatepicker #dtill="ngbDatepicker" />
+						</div>
+					</div>
+					<hr>
+					<h5>Fleet</h5>
+					<div class="list-item">
+						<mat-checkbox [checked]=true>Fleet A</mat-checkbox>
+					</div>
+					<div class="list-item">
+						<mat-checkbox [checked]=true>Fleet B</mat-checkbox>
+					</div>
+					<div class="list-item">
+						<mat-checkbox>Fleet C</mat-checkbox>
+					</div>
+					<div class="list-item">
+						<mat-checkbox>Fleet D</mat-checkbox>
+					</div>
+					<div class="list-item">
+						<mat-checkbox>Fleet E</mat-checkbox>
+					</div>
+				</div>
+				<hr>
+				<div class="filter-footer">
+					<div class="row mx-0">
+						<div class="col px-0">
+							<button class="kt-round-btn kt-btn-default">
+								Reset
+							</button>
+						</div>
+						<div class="col px-0 text-right">
+							<button class="kt-round-btn kt-btn-primary">
+								Apply
+								<span class="icon-a_arrow-forward addon-right"></span>
+							</button>
+						</div>
+					</div>
+				</div>
+			</perfect-scrollbar>
+		</div>
+	</div>
+	<div [class]="searchFlag?'accordion filter-scroll small-scroll':'accordion filter-scroll'">
+		<perfect-scrollbar>
+		<div class="v-card">
+			<div class="v-header" id="headingOne">
+				<a data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					Fleet A
+				</a>
+			</div>
+			<div id="collapseOne" class="v-list collapse show" aria-labelledby="headingOne">
+				<div class="v-body">
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-100</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>85%&nbsp;|&nbsp;<span class="icon-a_manual-driving">&nbsp;</span>Manual driving</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-100</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>85%&nbsp;|&nbsp;<span class="icon-a_manual-driving">&nbsp;</span>Manual driving</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0 active">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-101</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>85%&nbsp;|&nbsp;<span class="icon-a_loading">&nbsp;</span>Loading</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-102</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>15%&nbsp;|&nbsp;<span class="icon-a_autonomous-driving">&nbsp;</span>Autonomous driving</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0 v-danger">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-103</div>
+							<div class="v-desc"><span class="icon-a_fuel-state">&nbsp;</span>73%&nbsp;|&nbsp;<span class="icon-a_parking">&nbsp;</span>Parking</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="v-card">
+			<div class="v-header" id="heading2">
+				<a data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2" class="collapsed">
+					Fleet B
+				</a>
+			</div>
+
+			<div id="collapse2" class="v-list collapse" aria-labelledby="heading2">
+				<div class="v-body">
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-100</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>85%&nbsp;|&nbsp;<span class="icon-a_manual-driving">&nbsp;</span>Manual driving</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-100</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>85%&nbsp;|&nbsp;<span class="icon-a_manual-driving">&nbsp;</span>Manual driving</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-101</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>85%&nbsp;|&nbsp;<span class="icon-a_loading">&nbsp;</span>Loading</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-102</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>15%&nbsp;|&nbsp;<span class="icon-a_autonomous-driving">&nbsp;</span>Autonomous driving</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-103</div>
+							<div class="v-desc"><span class="icon-a_fuel-state">&nbsp;</span>73%&nbsp;|&nbsp;<span class="icon-a_parking">&nbsp;</span>Parking</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="v-card">
+			<div class="v-header" id="heading3">
+				<a data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3" class="collapsed">
+					Fleet C
+				</a>
+			</div>
+
+			<div id="collapse3" class="v-list collapse" aria-labelledby="heading3">
+				<div class="v-body">
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-100</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>85%&nbsp;|&nbsp;<span class="icon-a_manual-driving">&nbsp;</span>Manual driving</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-100</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>85%&nbsp;|&nbsp;<span class="icon-a_manual-driving">&nbsp;</span>Manual driving</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-101</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>85%&nbsp;|&nbsp;<span class="icon-a_loading">&nbsp;</span>Loading</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-102</div>
+							<div class="v-desc"><span class="icon-a_battery-state">&nbsp;</span>15%&nbsp;|&nbsp;<span class="icon-a_autonomous-driving">&nbsp;</span>Autonomous driving</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+					<div class="v-item row mx-0">
+						<div class="col px-0">
+							<div class="v-name">Vehicle AB-1234-103</div>
+							<div class="v-desc"><span class="icon-a_fuel-state">&nbsp;</span>73%&nbsp;|&nbsp;<span class="icon-a_parking">&nbsp;</span>Parking</div>
+						</div>
+						<div class="col-auto px-1">
+							<div class="v-img"><img src="assets/media/icons/pulse_yellow.svg" class="header-icon"></div>
+							<div class="v-time">1 min ago</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</perfect-scrollbar>
+	</div>
+</div>

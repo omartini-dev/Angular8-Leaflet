@@ -1,0 +1,27 @@
+<!-- begin:: Brand -->
+<div
+  class="kt-aside__brand kt-grid__item"
+  [ngClass]="htmlClassService.getClasses('brand', true)"
+  id="kt_aside_toggler"
+>
+  <div class="kt-aside__brand-logo">
+    <!-- <a href="javascript:;" routerLink="/">
+      <img alt="logo" [attr.src]="headerLogo"/>
+    </a> -->
+  </div>
+  <div class="kt-aside__brand-tools">
+    <button
+      ktToggle
+      [options]="toggleOptions"
+      class="kt-aside__brand-aside-toggler kt-aside__brand-aside-toggler--left aside-toggler"
+    >
+      <span>
+        <i class="icon-a_close-menu" style="font-size: 18px !important;"> </i>
+      </span>
+      <span>
+        <span class="icon-a_dashboard"></span>
+      </span>
+    </button>
+  </div>
+</div>
+<!-- end:: Brand -->

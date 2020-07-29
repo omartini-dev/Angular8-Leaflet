@@ -1,0 +1,91 @@
+<!--begin::Head-->
+<div class="login-head">
+  <div class="kt-grid__item login-header-img">
+    <a href="javascript:;" class="kt-login__logo">
+      <img
+        src="../../../../../assets/media/logos/ZF-logo-STD-White-3C.svg"
+        alt=""
+      />
+    </a>
+  </div>
+  <div class="kt-grid__item login-header-text">
+    <h3>Fleet Monitoring</h3>
+  </div>
+  <!-- <span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
+	<a href="javascript:;" routerLink="/auth/register" class="kt-link kt-login__signup-link">{{ 'AUTH.GENERAL.SIGNUP_BUTTON' | translate }}</a> -->
+</div>
+<!--end::Head-->
+
+<!--begin::Body-->
+<div class="kt-login__body">
+  <!--begin::Signin-->
+  <div class="kt-login__form">
+    <div class="kt-login__title">
+      <h3>Sign In</h3>
+    </div>
+
+    <kt-auth-notice></kt-auth-notice>
+
+    <!--begin::Form-->
+    <form class="kt-form" [formGroup]="loginForm" autocomplete="off">
+      <div class="form-group">
+        <input
+          [class.is-invalid]="
+            user_id.invalid && (user_id.dirty || user_id.touched)
+          "
+          id="user_id"
+          type="text"
+          class="form-control"
+          placeholder="{{ 'AUTH.INPUT.USER_ID' | translate }}"
+          formControlName="user_id"
+          autocomplete="off"
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          placeholder="{{ 'AUTH.INPUT.PASSWORD' | translate }}"
+          formControlName="password"
+          autocomplete="off"
+          class="form-control"
+        />
+      </div>
+      <!--begin::Action-->
+      <div class="kt-login__actions">
+        <div class="form-check remember-me-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="remember-me-check"
+          />
+          <label class="form-check-label" for="remember-me-check">
+            Remember me
+          </label>
+        </div>
+        <a
+          href="javascript:;"
+          routerLink="/auth/forgot-password"
+          class="kt-link kt-login__link-forgot"
+        >
+          {{ "AUTH.GENERAL.FORGOT_BUTTON" | translate }}
+        </a>
+      </div>
+      <div class="kt-login__actions">
+        <button
+          (click)="submit()"
+          [ngClass]="{
+            'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading
+          }"
+          id="kt_login_signin_submit"
+          class="btn btn-primary btn-elevate kt-login__btn-primary btn-block"
+        >
+          {{ "AUTH.LOGIN.BUTTON" | translate }}
+        </button>
+      </div>
+      <!--end::Action-->
+    </form>
+    <!--end::Form-->
+  </div>
+  <!--end::Signin-->
+</div>
+<!--end::Body-->

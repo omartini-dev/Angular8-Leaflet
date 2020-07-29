@@ -1,0 +1,61 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit KPIs</h4>
+  </div>
+  <div class="modal-body">
+
+    <div cdkDropListGroup>
+
+      <div class="kpis-list active">
+        <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="activeItems" class="kpis-list-item"
+          (cdkDropListDropped)="drop($event)">
+          <div class="kpis-list-item-box" *ngFor="let item of activeItems" cdkDrag>
+            <div class="kpis-list-item-box-title">
+              {{item.title}}
+            </div>
+            <div class="kpis-list-item-box-sub_title">
+              {{item.sub_title}}
+            </div>
+            <div class="kpis-list-item-box-description">
+              {{item.description}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="kpis-list-header">
+        <h5 class="kpis-list-title">Availiable KPI titles (25)</h5>
+        <mat-icon class="kpis-list-search-icon material-icons" (click)="searchVisible = !searchVisible">search
+        </mat-icon>
+        <input type="text" class="kpis-list-search-input" [style.width]="searchVisible ? '150px' : '0px'"
+          [style.opacity]="searchVisible ? '1' : '0'" [style.visibility]="searchVisible ? 'visible' : 'hidden'">
+      </div>
+
+
+      <div class="kpis-list inactive">
+        <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="inActiveItems" class="kpis-list-item"
+          (cdkDropListDropped)="drop($event)">
+          <div class="kpis-list-item-box" *ngFor="let item of inActiveItems" cdkDrag>
+            <div class="kpis-list-item-box-title">
+              {{item.title}}
+            </div>
+            <div class="kpis-list-item-box-sub_title">
+              {{item.sub_title}}
+            </div>
+            <div class="kpis-list-item-box-description">
+              {{item.description}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary btn-cancel" (click)="closeDialog()">Cancel</button>
+    <button type="button" class="btn btn-primary btn-save">Save</button>
+  </div>
+</div>
