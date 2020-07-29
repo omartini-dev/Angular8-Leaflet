@@ -52,7 +52,7 @@
     "leaflet-rotatedmarker": "^0.2.0",
     "leaflet-routing-machine": "^3.2.12",
     "leaflet.markercluster": "^1.4.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "ng-inline-svg": "^9.2.2",
