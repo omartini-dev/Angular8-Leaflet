@@ -1,8 +1,8 @@
 # Metronic Angular
 
-<img width="900" src="src/assets/images/cover1.png" border="0" />
+<img width="900" src="src/assets/media/bg/cover1.png" border="0" />
 
-<img width="900" src="src/assets/images/cover2.png" border="0" />
+<img width="900" src="src/assets/media/bg/cover2.png" border="0" />
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
 
